@@ -34,24 +34,29 @@ class Login extends Component {
         this.props.setUser(response.data);
       })
       .catch(error => {
-        switch (error.response.status) {
-          case 400:
-            this.setState({ errorMsg: 'Bad request' });
-            break;
-          case 401:
-            this.setState({ errorMsg: 'Wrong credentials' });
-            break;
-          case 429:
-            this.setState({ errorMsg: 'Too many requests, try again later' });
-            break;
-          case 500:
-            this.setState({ errorMsg: 'Internal server error' });
-            break;
-          case 503:
-            this.setState({ errorMsg: 'Server offline, try again later' });
-            break;
-          default:
-            this.setState({ errorMsg: 'Oops, something went wrong' });
+        if (error.response) {
+          switch (error.response.status) {
+            case 400:
+              this.setState({ errorMsg: 'Bad request' });
+              break;
+            case 401:
+              this.setState({ errorMsg: 'Wrong credentials' });
+              break;
+            case 429:
+              this.setState({ errorMsg: 'Too many requests, try again later' });
+              break;
+            case 500:
+              this.setState({ errorMsg: 'Internal server error' });
+              break;
+            case 503:
+              this.setState({ errorMsg: 'Server offline, try again later' });
+              break;
+            default:
+              this.setState({ errorMsg: 'Oops, something went wrong' });
+          }
+        }
+        else {
+          this.setState({ errorMsg: 'Check your internet connection' });
         }
       })
   };

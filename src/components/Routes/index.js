@@ -3,34 +3,26 @@ import { Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import NotLoggedInRoutes from './NotLoggedInRoutes';
 import LoggedInRoutes from './LoggedInRoutes';
-import { initialGetUser } from '../../actions';
+import { getUser } from '../../actions';
 
 class Routes extends Component {
   componentDidMount() {
-    this.props.initialGetUser();
+    this.props.getUser();
   }
-  
+
   render() {
     const { user } = this.props;
 
-    return (
-      <React.Fragment>
-        { user ? (
-            <Route component={LoggedInRoutes} />
-          ) : (
-            <Route component={NotLoggedInRoutes} />
-        )}
-      </React.Fragment>
-    );
+    return (user ? (
+      <Route component={LoggedInRoutes} />
+      ) : (
+      <Route component={NotLoggedInRoutes} />
+      ))
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    user: state.user
-  };
-};
+const mapStateToProps = ({user}) => ({user});
 
-const mapDispatchToProps = { initialGetUser };
+const mapDispatchToProps = { getUser };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Routes);

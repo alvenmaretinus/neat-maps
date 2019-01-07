@@ -2,7 +2,7 @@ import React from 'react';
 import { Route, Redirect, Switch } from 'react-router-dom';
 import Login from '../Login';
 
-const NotLoggedInRoutes = () => {
+const NotLoggedInRoutes = (props) => {
   return (
     <Switch>
       <Route path="/login" exact component={Login} />

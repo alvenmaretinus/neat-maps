@@ -55,3 +55,7 @@ export const addCsvData = data => {
     payload: data
   }
 }
+
+export const addCsvDataType = data => {
+  
+}

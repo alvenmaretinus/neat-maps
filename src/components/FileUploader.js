@@ -10,7 +10,7 @@ const FileUploader = ({ addCsvData }) => {
     fileReader.onloadend = async () => {
       let dataRows = fileReader.result.split(/[\r\n]+/);
       let data = await dataRows.map(row => {
-        return row.match(/(".*?"|[^",]+)(?=\s*,|\s*$)/g);
+        return row.match(/(".*?"|[^",]+)(?=\s*,|\s*$)/g).map(column => column.replace(/['"]+/g, ''));
       });
       addCsvData(data);
     }

@@ -21,7 +21,7 @@ class Routes extends Component {
   }
 }
 
-const mapStateToProps = ({user}) => ({user});
+const mapStateToProps = ({ user }) => ({ user });
 
 const mapDispatchToProps = { getUser };
 

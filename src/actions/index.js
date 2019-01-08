@@ -32,3 +32,26 @@ export const removeUser = () => dispatch => {
     payload: null
   });
 }
+
+export const addCsvData = data => {
+  if (typeof(Storage) !== 'undefined') {
+    let localData = JSON.parse(localStorage.getItem('user'));
+
+    if (!localData.csvData) {
+      localData.csvData = [data];
+    } else {
+      if (localData.csvData.length !== 3) {
+        localData.csvData.push(data);
+      } else {
+        localData.csvData = [...localData.csvData.filter((value, index) => index !== 0), data];
+      }
+    }
+
+    localStorage.setItem('user', JSON.stringify(localData));
+  }
+
+  return {
+    type: 'ADD_CSV_DATA',
+    payload: data
+  }
+}

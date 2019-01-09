@@ -9,3 +9,41 @@
   align-items: center;
   padding: 30px 0;
 }
+
+.mapButtons {
+  display: flex;
+  padding: 80px 0 10px;
+}
+
+.mapButtons > button {
+  outline: none;
+  border: none;
+  border-radius: 100%;
+  color: #eee;
+  font-size: 20px;
+  font-weight: bold;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  background: #546de5;
+  cursor: pointer;
+  user-select: none;
+  transition: filter .3s;
+}
+
+.mapButtons > button:not(:last-child) {
+  margin-right: 20px
+}
+
+.mapButtons > button:hover {
+  filter: brightness(1.2);
+}
+
+.mapButtons > button:disabled {
+  filter: brightness(1.8);
+  cursor: default;
+  user-select: none;
+}

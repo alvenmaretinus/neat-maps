@@ -52,15 +52,17 @@ class Main extends Component {
         <div className={styles.content}>
           { this.state.csvData.length === 0 && <FileUploader onFileLoad={this.onFileLoad} /> }
           { this.state.csvData.length > 0 && <DataTypeTable data={this.state.csvData} onResetData={this.onResetData} /> }
-          { data.length > 0 && data.map((list, index) =>
-            <button
-              key={index}
-              disabled={this.state.activeMapIndex === index}
-              onClick={() => this.onSelectMapClick(index)}
-            >
-              {index}
-            </button>
-          ) }
+          <div className={styles.mapButtons}>
+            { data.length > 0 && data.map((list, index) =>
+              <button
+                key={index}
+                disabled={this.state.activeMapIndex === index}
+                onClick={() => this.onSelectMapClick(index)}
+              >
+                {index+1}
+              </button>
+            ) }
+          </div>
           { data.length > 0 && <Map data={data[this.state.activeMapIndex]} /> }
         </div>
       </div>

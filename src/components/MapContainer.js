@@ -3,10 +3,12 @@ import { Map, GoogleApiWrapper, Marker } from 'google-maps-react';
 import MapLegends from './MapLegends';
 import { googleApiKey } from '../apis/google-maps';
 import { randomColor } from '../helpers';
+import styles from './MapContainer.module.css';
 
 const mapStyles = {
-  width: '600px',
-  height: '600px'
+  width: '100%',
+  height: '600px',
+  minWidth: '1000px'
 };
 
 export class MapContainer extends Component {
@@ -16,7 +18,7 @@ export class MapContainer extends Component {
     let legendsData= [];
 
     return (
-      <React.Fragment>
+      <div className={styles.container}>
         <Map
           google={google}
           zoom={6}
@@ -46,7 +48,7 @@ export class MapContainer extends Component {
           )}
         </Map>
         <MapLegends data={legendsData} />
-      </React.Fragment>
+      </div>
     );
   }
 }

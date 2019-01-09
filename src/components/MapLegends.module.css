@@ -1,4 +1,31 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  background: white;
+  padding: 20px 70px 7.5px;
+}
+
 .icon {
   width: 20px;
   height: 20px;
+  margin-right: 3px;
+}
+
+.icon + span {
+  color: #2e3954;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.card {
+  display: inline-flex;
+  align-items: center;
+  margin-right: 30px;
+  margin-bottom: 15px;
+}
+
+.card:last-child {
+  margin-right: 0;
 }

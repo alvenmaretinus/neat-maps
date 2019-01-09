@@ -1,8 +1,6 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { addCsvData } from '../actions';
 
-const FileUploader = ({ addCsvData }) => {
+const FileUploader = ({ onFileLoad }) => {
   const onFileChange = event => {
     const fileReader = new FileReader();
 
@@ -12,14 +10,11 @@ const FileUploader = ({ addCsvData }) => {
       let data = await dataRows.map(row => {
         return row.match(/(".*?"|[^",]+)(?=\s*,|\s*$)/g).map(column => column.replace(/['"]+/g, ''));
       });
-      addCsvData(data);
+      onFileLoad(data);
     }
-    event.target.value = '';
   }
 
   return <input type="file" accept=".csv" onChange={onFileChange} />;
 }
 
-const mapDispatchToProps = { addCsvData };
-
-export default connect(null, mapDispatchToProps)(FileUploader);
+export default FileUploader;

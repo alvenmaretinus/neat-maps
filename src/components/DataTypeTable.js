@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import DataTypeSelect from './DataTypeSelect';
+import { addData } from '../actions';
 
 class DataTypeTable extends Component {
   constructor() {
@@ -31,8 +32,6 @@ class DataTypeTable extends Component {
   }
 
   typesToPass(index) {
-    let types = [];
-
     if (this.state.dataTypeIndex[index]) {
       return [this.state.dataTypeIndex[index], ...this.state.types];
     }
@@ -54,17 +53,32 @@ class DataTypeTable extends Component {
     return this.state.dataTypeIndex[index] !== null;
   }
 
+  onSubmitButtonClick = () => {
+    this.props.addData(this.props.data, this.state.dataTypeIndex);
+    this.props.onResetData();
+  }
+
+  isSubmitButtonDisabled = () => {
+    for (let type of this.state.dataTypeIndex) {
+      if (!type) {
+        return true;
+      }  
+    }
+    return false;
+    
+  }
+
   render() {
-    const { index, user } = this.props;
+    const { data, onResetData } = this.props;
 
     return (
       <React.Fragment>
         <table>
           <thead>
             <tr>
-              { user.csvData[index][0].map((value, index) => {
+              { this.state.dataTypeIndex.map((value, index) => {
                 return (
-                  <td key={value}>
+                  <td key={index}>
                     <DataTypeSelect
                       index={index}
                       types={this.typesToPass(index)}
@@ -76,15 +90,20 @@ class DataTypeTable extends Component {
             </tr>
           </thead>
           <tbody>
-            { user.csvData[index].map(row => {
+            { data.map(row => {
               return <tr key={row}>{ row.map(column => {
                 return <td key={column}>{column}</td>
               }) }</tr>
             })}
           </tbody>
         </table>
-        <button onClick={this.resetState}>reset</button>
-        <button>submit</button>
+        <button onClick={onResetData}>Re-upload</button>
+        <button onClick={this.resetState}>Reset</button>
+        <button 
+          onClick={this.onSubmitButtonClick}
+          disabled={this.isSubmitButtonDisabled()}>
+          Submit
+        </button>
       </React.Fragment>
     );
   }
@@ -92,4 +111,6 @@ class DataTypeTable extends Component {
 
 const mapStateToProps = ({ user }) => ({ user });
 
-export default connect(mapStateToProps)(DataTypeTable);
+const addDispatchToProps = { addData };
+
+export default connect(mapStateToProps, addDispatchToProps)(DataTypeTable);

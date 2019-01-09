@@ -20,6 +20,7 @@
   cursor: pointer;
   padding: 10px 20px; 
   font-size: 16px;
+  outline: none;
   transition: filter .3s;
 }
 

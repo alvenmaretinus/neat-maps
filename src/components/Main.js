@@ -5,6 +5,7 @@ import FileUploader from './FileUploader';
 import DataTypeTable from './DataTypeTable';
 import Map from './MapContainer';
 import { removeUser, removeData, getData } from '../actions';
+import styles from './Main.module.css';
 
 class Main extends Component {
   constructor() {
@@ -46,20 +47,22 @@ class Main extends Component {
     const { user, data } = this.props;
 
     return (
-      <div>
+      <div className={styles.wrapper}>
         <Header user={user} logout={this.logout}></Header>
-        { this.state.csvData.length === 0 && <FileUploader onFileLoad={this.onFileLoad} /> }
-        { this.state.csvData.length > 0 && <DataTypeTable data={this.state.csvData} onResetData={this.onResetData} /> }
-        { data.length > 0 && data.map((list, index) =>
-          <button
-            key={index}
-            disabled={this.state.activeMapIndex === index}
-            onClick={() => this.onSelectMapClick(index)}
-          >
-            {index}
-          </button>
-        ) }
-        { data.length > 0 && <Map data={data[this.state.activeMapIndex]} /> }
+        <div className={styles.content}>
+          { this.state.csvData.length === 0 && <FileUploader onFileLoad={this.onFileLoad} /> }
+          { this.state.csvData.length > 0 && <DataTypeTable data={this.state.csvData} onResetData={this.onResetData} /> }
+          { data.length > 0 && data.map((list, index) =>
+            <button
+              key={index}
+              disabled={this.state.activeMapIndex === index}
+              onClick={() => this.onSelectMapClick(index)}
+            >
+              {index}
+            </button>
+          ) }
+          { data.length > 0 && <Map data={data[this.state.activeMapIndex]} /> }
+        </div>
       </div>
     );
   }

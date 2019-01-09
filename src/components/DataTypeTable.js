@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import DataTypeSelect from './DataTypeSelect';
 import { addData } from '../actions';
+import styles from './DataTypeTable.module.css'
 
 class DataTypeTable extends Component {
   constructor() {
@@ -73,7 +74,17 @@ class DataTypeTable extends Component {
 
     return (
       <React.Fragment>
-        <table>
+        <div className={styles.buttons}>
+          <button className={styles.reset} onClick={this.resetState}>Reset</button>
+          <button 
+            className={styles.submit}
+            onClick={this.onSubmitButtonClick}
+            disabled={this.isSubmitButtonDisabled()}>
+            Submit
+          </button>
+          <button onClick={onResetData}>Re-upload</button>
+        </div>
+        <table className={styles.table}>
           <thead>
             <tr>
               { this.state.dataTypeIndex.map((value, index) => {
@@ -97,13 +108,6 @@ class DataTypeTable extends Component {
             })}
           </tbody>
         </table>
-        <button onClick={onResetData}>Re-upload</button>
-        <button onClick={this.resetState}>Reset</button>
-        <button 
-          onClick={this.onSubmitButtonClick}
-          disabled={this.isSubmitButtonDisabled()}>
-          Submit
-        </button>
       </React.Fragment>
     );
   }

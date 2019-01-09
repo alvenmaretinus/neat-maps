@@ -1,4 +1,5 @@
 import React from 'react';
+import styles from './FileUploader.module.css'
 
 const FileUploader = ({ onFileLoad }) => {
   const onFileChange = event => {
@@ -14,7 +15,12 @@ const FileUploader = ({ onFileLoad }) => {
     }
   }
 
-  return <input type="file" accept=".csv" onChange={onFileChange} />;
+  return (
+    <div className={styles.file}>
+      <input type="file" accept=".csv" onChange={onFileChange} />
+      <span>Add or drop <strong>.csv</strong> file here</span>
+    </div>
+  );
 }
 
 export default FileUploader;

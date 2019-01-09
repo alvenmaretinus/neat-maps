@@ -1,0 +1,89 @@
+.table {
+  background: #596274;
+  padding: 40px 50px;
+  border-radius: 6px;
+  color: #eee;
+  border-collapse: collapse;
+  font-size: 14px;
+  overflow: hidden;
+}
+
+.table td {
+  border-bottom: 1px solid #2e3954;
+  padding: 6px 20px;
+  text-align: center;
+}
+
+.table tr:last-child:not(:only-child) td {
+  border-bottom: 0;
+}
+
+.table thead td {
+  padding: 20px;
+}
+
+.table tr:hover td {
+  color: white;
+}
+
+.table select {
+  font-size: 14px;
+  outline: none;
+  transition: filter .3s;
+}
+
+.table select:disabled {
+  cursor: not-allowed;
+  filter: brightness(0.7);
+}
+
+.buttons {
+  display: flex;
+  margin-bottom: 30px;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.buttons > button {
+  width: 180px;
+  padding: 15px;
+  border: none;
+  outline: none;
+  color: #eee;
+  transition: filter .3s;
+  background: #786fa6;
+  font-size: 16px;
+  font-weight: bold;
+  border-left: 1px solid #2e3954;
+  border-right: 1px solid #2e3954;
+  cursor: pointer;
+}
+
+.buttons > button:hover {
+  filter: brightness(1.2);
+}
+
+.buttons > button:first-child {
+  border-top-left-radius: 30px;
+  border-bottom-left-radius: 30px;
+  border-left: none;
+}
+
+.buttons > button:last-child {
+  border-top-right-radius: 30px;
+  border-bottom-right-radius: 30px;
+  border-right: none;
+}
+
+.buttons > button.reset {
+  background: #f95d62;
+}
+
+.buttons > button.submit {
+  background: #3dc1d3;
+}
+
+.buttons > button.submit:disabled {
+  cursor: not-allowed;
+  filter: brightness(0.5);
+}

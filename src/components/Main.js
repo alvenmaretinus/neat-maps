@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import Header from './Header';
 import FileUploader from './FileUploader';
 import DataTypeTable from './DataTypeTable';
 import Map from './MapContainer';
@@ -46,9 +47,7 @@ class Main extends Component {
 
     return (
       <div>
-        <div>{user.email}</div>
-        <div>{user.id}</div>
-        <button className="button" onClick={this.logout}>Logout</button>
+        <Header user={user} logout={this.logout}></Header>
         { this.state.csvData.length === 0 && <FileUploader onFileLoad={this.onFileLoad} /> }
         { this.state.csvData.length > 0 && <DataTypeTable data={this.state.csvData} onResetData={this.onResetData} /> }
         { data.length > 0 && data.map((list, index) =>

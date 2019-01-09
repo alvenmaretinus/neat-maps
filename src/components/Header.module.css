@@ -1,0 +1,55 @@
+.header {
+  background: #566276;
+  display: flex;
+  align-items: center;
+  padding: 25px;
+}
+
+.title {
+  color: #eee;
+  font-size: 48px;
+  margin: 0;
+}
+
+.button {
+  color: #eee;
+  background: #e66767;
+  font-weight: bold;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  padding: 10px 20px; 
+  font-size: 16px;
+  transition: filter .3s;
+}
+
+.button:hover {
+  filter: brightness(1.2)
+}
+
+.user {
+  margin-left: auto;
+  margin-right: 3%;
+  display: flex;
+  flex-direction: column;
+  background: #303952;
+  padding: 10px;
+  border-radius: 4px;
+  color: white;
+}
+
+.email,
+.id {
+  color :#eee;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.email {
+  margin-bottom: 5px;
+}
+
+.type {
+  font-size: 11px;
+  color: #eee;
+}

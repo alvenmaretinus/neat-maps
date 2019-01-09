@@ -6,3 +6,5 @@ export const camelCased = normalCase => {
 };
 
 export const lowerCased = normalCase => normalCase.toLowerCase();
+
+export const randomColor = () => Math.floor(Math.random()*16777215).toString(16);

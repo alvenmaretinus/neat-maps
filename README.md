@@ -1,3 +1,7 @@
+This project utilizes common libraries for typical React application workflow.
+For state management I utilize redux and for simple session management I make use of Web Storage.
+To get started, simply run `npm install` and then `npm start`.
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

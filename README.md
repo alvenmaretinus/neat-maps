@@ -1,5 +1,6 @@
 This project utilizes common libraries for typical React application workflow.
-For state management I utilize redux and for simple session management I make use of Web Storage.
+For state management I utilize redux; for simple session management I make use of Web Storage.
+Don't forget to change the Google API key in `src/apis/google-maps.js` so that the application could work on your end.
 To get started, simply run `npm install` and then `npm start`.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
